@@ -1,6 +1,7 @@
 ﻿import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "./AuthContext";
+import "./Register.css";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -38,11 +39,35 @@ const Register = () => {
       {error && <div className="error">{error}</div>}
       {success && <div className="success">{success}</div>}
       <form onSubmit={onSubmit}>
-        <input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-        <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit" disabled={loading}>{loading ? "Registering..." : "Register"}</button>
+        <input
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? "Registering..." : "Register"}
+        </button>
       </form>
+
+      <div className="form-footer">
+        <p>
+          Already have an account?{" "}
+          <Link to="/login" className="form-link">
+            Login
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };

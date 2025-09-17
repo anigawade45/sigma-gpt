@@ -94,6 +94,20 @@ body {
   font-size: 0.9rem;
 }
 
+/* Form footer */
+.form-footer {
+  margin-top: 12px;
+  text-align: center;
+  color: #9aa4af;
+  font-size: 0.95rem;
+}
+
+.form-footer .form-link {
+  color: #e6eef8;
+  text-decoration: underline;
+  margin-left: 6px;
+}
+
 /* Fade in animation */
 @keyframes fadeIn {
   from {

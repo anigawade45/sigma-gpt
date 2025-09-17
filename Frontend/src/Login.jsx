@@ -1,5 +1,5 @@
 ﻿import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import "./Login.css";
 
@@ -32,10 +32,30 @@ const Login = () => {
       <h2>Login</h2>
       {error && <div className="error">{error}</div>}
       <form onSubmit={onSubmit}>
-        <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit" disabled={loading}>{loading ? "Logging in..." : "Login"}</button>
+        <input
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
       </form>
+
+      <div className="form-footer">
+        <p>
+          Don't have an account?{" "}
+          <Link to="/register" className="form-link">
+            Register
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
