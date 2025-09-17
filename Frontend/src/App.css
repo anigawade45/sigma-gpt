@@ -1,0 +1,54 @@
+/* App.css */
+* {
+  color: #ececec;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Reduce gap after headings */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 2px;  /* instead of default ~20px */
+}
+
+/* Reduce gap before lists */
+ul, ol {
+  margin-top: 0px;  /* tighten gap */
+  margin-bottom: 1px;
+  padding-left: 30px;
+}
+
+/* Optional: make list text spacing nicer */
+li {
+  margin-bottom: 0px;
+  line-height: 1.5;
+}
+
+.app {
+  height: 100vh;            /* full viewport height */
+  display: flex;
+  align-items: stretch;
+  background-color: #212121;
+  overflow: hidden;
+}
+
+/* left sidebar fixed width, center chat fixed width, right area flexible */
+.app .sidebar {
+  width: 280px;            /* adjust to match screenshot left column */
+  flex: 0 0 280px;
+}
+
+.app .chatWindow {
+  width: 1260px;            /* center column width (adjustable) */
+  flex: 0 0 1260px;
+}
+
+/* right workspace (implicit) will fill remaining space */
+.app .right-space {
+  flex: 1 1 auto;
+  min-width: 200px;
+  background: transparent; /* keep same dark background */
+}

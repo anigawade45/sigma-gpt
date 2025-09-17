@@ -1,0 +1,107 @@
+/* Global dark theme (same as Login.css) */
+body {
+  background: #1f1f1f;
+  color: #e6eef8;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Center form container */
+.auth-form {
+  max-width: 380px;
+  margin: 8% auto;
+  padding: 2rem;
+  background: #2a2a2a;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.auth-form h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Inputs */
+.auth-form input {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border: 1px solid #3a3a3a;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #e6eef8;
+  background: #1f1f1f;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.auth-form input:focus {
+  border-color: #339cff;
+  box-shadow: 0 0 0 2px rgba(51, 156, 255, 0.25);
+}
+
+/* Button */
+.auth-form button {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #339cff, #0059d6);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 6px 15px rgba(11, 108, 255, 0.25);
+}
+
+.auth-form button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, #4da8ff, #0065f5);
+}
+
+.auth-form button:disabled {
+  background: #444;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Error message */
+.error {
+  background: rgba(255, 77, 77, 0.1);
+  border: 1px solid rgba(255, 77, 77, 0.3);
+  color: #ff6b6b;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* ✅ Success message (only for Register) */
+.success {
+  background: rgba(51, 156, 255, 0.1);
+  border: 1px solid rgba(51, 156, 255, 0.3);
+  color: #4da8ff;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

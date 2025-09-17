@@ -1,0 +1,283 @@
+:root {
+  --bg: #121212;
+  --panel: #1f1f1f;
+  --muted: #9aa4af;
+  --accent: #339cff;
+  --bubble-user: #0b6cff;
+  --bubble-assistant: #2a2a2a;
+  --accent-contrast: #fff;
+}
+
+.chatWindow {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;          /* control padding inside header/main/footer */
+}
+
+/* Header */
+.cw-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(4px);
+}
+
+.cw-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.4px;
+  color: var(--accent-contrast);
+}
+
+.cw-user {
+  position: relative;
+}
+
+.user-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.user-initials {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(51,156,255,0.18);
+}
+
+/* Dropdown */
+.cw-dropdown {
+  position: absolute;
+  right: 0;
+  margin-top: 10px;
+  width: 180px;
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  padding: 6px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+}
+
+.cw-dd-item {
+  text-align: left;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  color: var(--accent-contrast);
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.cw-dd-item:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.cw-dd-item.danger {
+  color: #ff9b9b;
+}
+
+/* Main / messages area (Chat renders .chats) */
+.cw-main {
+  padding: 12px 12px;   /* a bit of left/right padding like screenshot */
+  height: calc(100% - 8px); /* ensure main consumes available height */
+  overflow: hidden;
+}
+
+/* Ensure the Chat .chats container is scrollable and fills available area */
+.chats {
+  height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  scroll-behavior: smooth;
+}
+
+/* Message bubbles */
+.userDiv, .gptDiv {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 80%;
+}
+
+.userDiv {
+  align-self: flex-end;
+  justify-content: flex-end;
+}
+
+.gptDiv {
+  align-self: flex-start;
+}
+
+.userMessage {
+  background: linear-gradient(180deg, var(--bubble-user), #0059d6);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 16px;
+  border-bottom-right-radius: 4px;
+  font-size: 0.95rem;
+  box-shadow: 0 8px 20px rgba(11,108,255,0.12);
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.gptDiv > :where(p, div, pre) {
+  background: var(--bubble-assistant);
+  color: #e6eef8;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+}
+
+/* Markdown code blocks */
+.gptDiv pre {
+  background: #0b0b0b;
+  padding: 12px;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+/* Footer / input */
+.cw-footer {
+  padding: 12px 18px;
+  border-top: 1px solid rgba(255,255,255,0.03);
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0));
+}
+
+.inputBox {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.inputBox input {
+  flex: 1;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.04);
+  background: rgba(0,0,0,0.35);
+  padding: 0 16px;
+  color: var(--accent-contrast);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+#submit {
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(180deg, var(--accent), #1270ff);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(19,103,255,0.18);
+}
+
+#submit:hover {
+  transform: translateY(-1px);
+}
+
+/* Loader panel — centered above the input with glassy pill and label */
+.cw-loader {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 84px;             /* sits slightly above the footer/input */
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(20, 24, 28, 0.72);
+  color: #e6eef8;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  pointer-events: none;     /* not interactive */
+  transition: opacity 180ms ease, transform 180ms ease;
+  opacity: 1;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+/* Small label beside the spinner */
+.cw-loader .cw-label {
+  font-size: 0.88rem;
+  color: rgba(230,238,248,0.92);
+  opacity: 0.95;
+  padding-right: 4px;
+}
+
+/* Slight vertical lift when active (if you toggle a class) */
+.cw-loader.active {
+  transform: translateX(-50%) translateY(-4px);
+  opacity: 1;
+}
+
+/* Hidden state (you can toggle .hidden via JS if you want) */
+.cw-loader.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(6px);
+  pointer-events: none;
+}
+
+/* Improve spinner spacing/size when using react-spinners BeatLoader */
+.cw-loader > div {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Make sure spinner dots are compact on small screens */
+@media (max-width: 520px) {
+  .cw-loader {
+    bottom: 100px; /* give a bit more room on smaller screens */
+    padding: 6px 10px;
+    gap: 8px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 720px) {
+  .chats {
+    height: calc(100vh - 240px);
+  }
+  .cw-dropdown {
+    right: 8px;
+  }
+  .inputBox {
+    padding: 0 8px;
+  }
+}
