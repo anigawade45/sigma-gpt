@@ -143,13 +143,14 @@ const Sidebar = () => {
             onClick={() => changeThread(thread.threadId)}
             className={currThreadId === thread.threadId ? "hightlighted" : ""}
           >
-            {thread.title}
+            <span className="thread-title">{thread.title}</span>
             <i
               className="fa-solid fa-trash"
               onClick={(e) => {
                 e.stopPropagation();
                 deleteThread(thread.threadId);
               }}
+              aria-hidden="true"
             ></i>
           </li>
         ))}
